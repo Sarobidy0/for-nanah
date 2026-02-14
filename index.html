@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pour Nanah</title>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS --- */
+        :root {
+            --bg-color: #1a0505;
+            --text-color: #f4e1e1;
+            --accent-color: #ff3860;
+            --gold-color: #d4af37;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Conteneur pour l'animation de fond */
+        #petal-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .petal {
+            position: absolute;
+            background-color: rgba(255, 56, 96, 0.6);
+            border-radius: 150% 0 150% 0;
+            animation: fall linear infinite;
+        }
+
+        /* Style des sections principales */
+        section {
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            flex-direction: column;
+            text-align: center;
+            opacity: 0; /* Caché au départ pour l'animation au scroll */
+            transform: translateY(50px);
+            transition: all 1s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 700px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        h1, h2 {
+            font-family: 'Parisienne', cursive;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .highlight { color: var(--gold-color); font-weight: 600; }
+
+        /* Section Poème */
+        .poem-box {
+            font-style: italic;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 25px;
+            text-align: left;
+            margin: 30px auto;
+            display: inline-block;
+        }
+
+        .poem-box p {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Bouton final */
+        .btn-final {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, var(--accent-color), #c72c4f);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-final:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 56, 96, 0.7);
+        }
+
+        /* Animation des pétales (définie en CSS, contrôlée en JS) */
+        @keyframes fall {
+            0% { opacity: 0; top: -10%; transform: translateX(0) rotate(0deg); }
+            10% { opacity: 1; }
+            90% { opacity: 0.8; }
+            100% { opacity: 0; top: 110%; transform: translateX(100px) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="petal-container"></div>
+
+    <section class="visible">
+        <div class="content-box">
+            <h1>Mon amour,</h1>
+            <p>Il y a des silences qui font plus de bruit que des cris. Depuis notre dernier échange, ce silence est devenu insupportable.</p>
+            <p>J'ai écrit beaucoup de messages, sous le coup de l'émotion et de la peur de te perdre. Aujourd'hui, je veux prendre le temps de te dire les choses calmement, sincèrement.</p>
+            <p style="font-size: 0.9rem; opacity: 0.7;">(Fais défiler doucement vers le bas)</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="content-box">
+            <h2>Ma chere bien aimé</h2>
+            <p>Je reconnais mes torts. J'ai dit et peu fait. J'ai parfois menti et j'ai cherché des choses superficielles ("surfait") au lieu de voir l'essentiel qui était juste devant moi.</p>
+            <p>Mon plus grand problème a été de ne pas savoir comprendre tes larmes et tes déceptions. Je t'ai blessée avec des messages incohérents et mes absences. Aucune excuse n'est parfaite pour effacer ça, mais sache que mon regret est profond et réel.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="content-box">
+            <h2>Ce que tu es pour moi</h2>
+            <p>Malgré mes erreurs, une chose a toujours été sûre : <span class="highlight">tu es exceptionnelle</span>. Tu es précieuse à mes yeux, d'une valeur inestimable.</p>
+            <p>C'est toi qui m'as fait briller, qui m'as donné de la valeur même dans mes moments les plus stupides. Tu es celle qui a su faire battre en moi un véritable amour. Si tu n'existais pas, dis-moi pourquoi j'existerais ?</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="content-box">
+            <h2>Pour nous...</h2>
+            <p>Je ne veux pas laisser notre histoire se terminer. Je veux garder précieusement mon être aimé.</p>
+            
+            <div class="poem-box">
+                <p>Dans le brouillard de mes erreurs passées,</p>
+                <p>Je cherche la lumière que tu m'as donnée.</p>
+                <p>Pardon pour les larmes, pour les soirées gâchées,</p>
+                <p>Mon cœur ne bat que pour te retrouver.</p>
+                <p>Ce n'est pas la fin, mon âme te le crie,</p>
+                <p>Reviens-moi, tu es ma vie.</p>
+            </div>
+
+            <a href="index.html" class="btn-final">Clique ici s'il te plait</a>
+        </div>
+    </section>
+
+    <script>
+        /* --- JAVASCRIPT --- */
+
+        // 1. Fonction pour créer l'animation réaliste des pétales
+        function createPetal() {
+            const petalContainer = document.getElementById('petal-container');
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+
+            // Taille aléatoire
+            const size = Math.random() * 20 + 10;
+            petal.style.width = `${size}px`;
+            petal.style.height = `${size}px`;
+
+            // Position de départ horizontale aléatoire
+            petal.style.left = `${Math.random() * 100}vw`;
+
+            // Durée de chute aléatoire (entre 8s et 15s) pour le réalisme
+            const duration = Math.random() * 7 + 8;
+            petal.style.animationDuration = `${duration}s`;
+
+            // Délai aléatoire
+            petal.style.animationDelay = `-${Math.random() * 5}s`;
+
+            petalContainer.appendChild(petal);
+
+            // Nettoyage : supprimer le pétale une fois tombé pour ne pas surcharger la page
+            setTimeout(() => {
+                petal.remove();
+            }, duration * 1000);
+        }
+
+        // Créer un nouveau pétale toutes les 300ms
+        setInterval(createPetal, 300);
+        // Créer quelques pétales au démarrage
+        for(let i = 0; i < 15; i++) createPetal();
+
+
+        // 2. Fonction pour faire apparaître le texte au scroll (Intersection Observer)
+        const sections = document.querySelectorAll('section');
+
+        const observerOptions = {
+            threshold: 0.3 // La section apparaît quand 30% est visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pour Toi, Mon Amour</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Joyeuse Saint-Valentin</h1>
+        
+        <div class="mots-doux">
+            <p>"Depuis que tu es dans ma vie, tout a une saveur différente. Tu es mon évidence, mon refuge et ma plus belle aventure. Chaque jour passé à tes côtés est un cadeau précieux."</p>
+            <p>Mon amour pour toi ne fait que grandir.</p>
+        </div>
+
+        <button id="reveal-btn" onclick="revealExcuses()">Voici ce que j'ai à te dire de plus (clique)</button>
+
+        <div id="excuse-section">
+            <div class="excuses">
+                <p>Mon amour,</p>
+                <p>Je profite de ce jour spécial pour t'ouvrir mon cœur entièrement. Je sais que je n'ai pas toujours été parfait.</p>
+                <p>Je te demande sincèrement pardon pour mes maladresses, pour les moments où j'ai pu être distant ou pour les peines que j'ai pu te causer. Tu mérites le meilleur, et mon plus grand souhait est de m'améliorer chaque jour pour toi, pour nous.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour révéler la lettre d'excuses avec douceur
+        function revealExcuses() {
+            const excuseSection = document.getElementById('excuse-section');
+            const btn = document.getElementById('reveal-btn');
+            
+            excuseSection.classList.add('visible');
+            btn.style.display = 'none'; // Cache le bouton après avoir cliqué
+        }
+
+        // Fonction pour créer des cœurs réalistes qui flottent
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            
+            // Propriétés aléatoires pour un effet naturel
+            const size = Math.random() * 20 + 10; // Taille entre 10px et 30px
+            const leftPosition = Math.random() * 100; // Position horizontale
+            const duration = Math.random() * 5 + 5; // Durée de flottaison entre 5s et 10s
+            const delay = Math.random() * 5; // Délai d'apparition
+            
+            heart.style.width = `${size}px`;
+            heart.style.height = `${size}px`;
+            heart.style.left = `${leftPosition}vw`;
+            heart.style.animationDuration = `${duration}s, ${Math.random() * 2 + 2}s`;
+            heart.style.animationDelay = `${delay}s, ${delay}s`;
+            
+            document.body.appendChild(heart);
+            
+            // Nettoie le DOM pour éviter les ralentissements
+            setTimeout(() => {
+                heart.remove();
+            }, (duration + delay) * 1000);
+        }
+
+        // Crée des cœurs régulièrement
+        setInterval(createHeart, 300);
+    </script>
+
+</body>
+</html>
